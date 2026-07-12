@@ -32,26 +32,13 @@ const sliderImages = [
   "/images/slider/slide-5.jpeg",
   "/images/slider/slide-6.jpeg",
 ];
-
 function Logo() {
   return (
-    <div className="scale-[0.78] sm:scale-100 origin-left leading-none">
-      <div className="flex items-center gap-2">
-        <div className="relative w-12 h-12 rounded-full border-4 border-red-600 flex items-center justify-center bg-black shadow-lg shadow-red-600/30">
-          <div className="w-6 h-6 rounded-full border-4 border-white" />
-          <div className="absolute -right-3 top-1/2 w-8 h-1 bg-red-600" />
-        </div>
-
-        <div>
-          <div className="text-white text-2xl sm:text-3xl font-black italic tracking-tight">
-            COVENTRY
-          </div>
-          <div className="bg-red-600 text-white px-3 py-1 text-sm sm:text-lg font-black tracking-[0.18em]">
-            MOBILE TYRES
-          </div>
-        </div>
-      </div>
-    </div>
+    <img
+      src="/images/coventry-logo.png"
+      alt="Coventry Mobile Tyres 24 Hour Service"
+      className="w-[190px] sm:w-[260px] h-auto object-contain"
+    />
   );
 }
 const miniSliderImages = [
@@ -126,20 +113,12 @@ const faqs = [
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [currentPosterSlide, setCurrentPosterSlide] = useState(0);
+
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
-    }, 3000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentPosterSlide((prev) => (prev + 1) % 2);
     }, 3000);
 
     return () => clearInterval(timer);
@@ -171,10 +150,7 @@ export default function Home() {
       <section className="bg-[#FFFFFF] text-black">
         <header className="relative z-30 bg-[#FFFFFF]">
           <div className="max-w-7xl mx-auto px-3 sm:px-6 py-3 flex items-center justify-between gap-3">
-            <a
-              href={`tel:${phoneNumber}`}
-              className="[&_*]:!text-slate-950 scale-[0.78] sm:scale-100 origin-left w-[148px] sm:w-auto"
-            >
+            <a href={`tel:${phoneNumber}`} className="block shrink-0">
               <Logo />
             </a>
 
@@ -189,7 +165,7 @@ export default function Home() {
           </div>
         </header>
 
-        <div className="bg-[#FDB913] text-slate-950 text-center py-3 px-4 font-black text-sm sm:text-base shadow-md">
+        <div className="bg-green-600 text-slate-950 text-center py-3 px-4 font-black text-sm sm:text-base shadow-md">
           Top Rated • Servicing Coventry, Kenilworth & All Surrounding Areas +12
           Mile Radius
         </div>
@@ -252,13 +228,10 @@ export default function Home() {
           >
             <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-gray-200 bg-white">
               <img
-                src={
-                  currentPosterSlide === 0
-                    ? "/images/coventry-poster.jpeg"
-                    : "/images/coventry-poster-2.jpeg"
-                }
-                alt="Coventry Mobile Tyres 24/7 emergency tyre service"
-                className="w-full h-auto block"
+                src="/images/coventry-poster.jpeg"
+                alt="Coventry Mobile Tyres 24/7 emergency mobile tyre fitting"
+                className="w-full h-auto block animate-pulse"
+                style={{ animationDuration: "0.7s" }}
               />
             </div>
           </a>
